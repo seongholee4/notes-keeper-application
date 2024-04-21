@@ -9,7 +9,7 @@ https://keeper-app-seven-hazel.vercel.app/
 ## Installation
 To install the app, clone the repository and run the following command in the root directory of the project:
 ```bash
-git clone https://github.com/seongholee4/keeper-app.git
+git clone https://github.com/seongholee4/notes-keeper-application.git
 ```
 1. Install Node.js and npm
 ```bash

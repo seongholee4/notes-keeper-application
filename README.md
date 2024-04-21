@@ -2,6 +2,9 @@
 This is a full stack note taking app built using React and Node.js with Express and MongoDB as the backend.
 It allows users to add, edit, delete and view notes. The app is built using React and uses the useState hook to manage state.
 
+Server: Node.js, Express, MongoDB, Mongoose, Cors
+Client: React, Axios
+
 ## Installation and Setup
 #### To install the app, clone the repository and run the following command in each of the server and client directories:
 ```bash

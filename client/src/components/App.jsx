@@ -4,10 +4,9 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 
-// deploy front end in Vercel and backend in railway (free limited time) or Heroku/any other services.
-// Change the path to your backend server URL after you deploy the backend.
-const path = "http://localhost:5000";
-// axios.get(`${process.env.REACT_APP_API_URL}/api/notes`)
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL
+});
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -15,7 +14,7 @@ function App() {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    axios.get(`${path}/notes`)
+    api.get(`/notes`)
       .then((res) => {
         setNotes(res.data);
       })
@@ -33,10 +32,9 @@ function App() {
   function addNote(event) {
     event.preventDefault();
     const newNote = { title, content };
-    axios.post(`${path}/notes`, newNote)
+    api.post(`/notes`, newNote)
       .then(res => {
         setNotes(prevNotes => [...prevNotes, res.data]);
-        // Reset the title and content inputs
         setTitle("");
         setContent("");
       })
@@ -44,16 +42,15 @@ function App() {
   }
 
   function deleteNote(id) {
-    axios.delete(`${path}/notes/${id}`)
-      .then((res) => {
-        // console.log('Note deleted:', res.data)
+    api.delete(`/notes/${id}`)
+      .then(() => {
         setNotes(prevNotes => prevNotes.filter(note => note._id !== id));
       })
       .catch(error => console.error('Error deleting note:', error));
   }
 
   function updateNote(id, title, content) {
-    axios.patch(`${path}/notes/${id}`, { title, content })
+    api.patch(`/notes/${id}`, { title, content })
       .then(response => {
         setNotes(prevNotes =>
           prevNotes.map(note => note._id === id ? response.data : note)
@@ -67,24 +64,13 @@ function App() {
       <Header />
       <div>
         <form onSubmit={addNote}>
-          <input
-            name="title"
-            placeholder="Title"
-            value={title}
-            onChange={handleTitleChange}
-          ></input>
-          <textarea
-            name="content"
-            placeholder="Take a note..."
-            rows="3"
-            value={content}
-            onChange={handleContentChange}
-          ></textarea>
+          <input name="title" placeholder="Title" value={title} onChange={handleTitleChange} ></input>
+          <textarea name="content" placeholder="Take a note..." rows="3" value={content} onChange={handleContentChange}></textarea>
           <button type="submit">Add</button>
         </form>
       </div>
       {notes.map((note) => (
-        <Note
+        <Note 
           key={note._id}
           id={note._id}
           title={note.title}

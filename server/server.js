@@ -30,6 +30,7 @@ app.get('/notes', async (req, res) => {
 // POST a new note
 app.post('/notes', async (req, res) => {
     try {
+        console.log("req.body", req.body)
         const note = new Note({
             _id : new mongoose.Types.ObjectId(),
             title: req.body.title,
