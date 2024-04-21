@@ -19,7 +19,7 @@ npm install
 ```bash
 npm start
 ```
-3. The app will be running on http://localhost:5000
+3. The app will be running on http://localhost:3000
 
 ## Features
 1. Add a note
