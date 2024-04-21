@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
-import initialNotes from "../notes";
+
+// deploy front end in Vercel and backend in railway (free limited time) or Heroku/any other services.
+// Change the path to your backend server URL after you deploy the backend.
+const path = "http://localhost:5000";
+// axios.get(`${process.env.REACT_APP_API_URL}/api/notes`)
 
 function App() {
-  const [notes, setNotes] = useState(initialNotes);
+  const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  useEffect(() => {
+    axios.get(`${path}/notes`)
+      .then((res) => {
+        setNotes(res.data);
+      })
+      .catch(error => console.log('Error fetching notes:', error));
+  }, []);
 
   function handleTitleChange(event) {
     setTitle(event.target.value);
@@ -19,22 +32,34 @@ function App() {
 
   function addNote(event) {
     event.preventDefault();
-    setNotes((prevNotes) => {
-      return [
-        ...prevNotes,
-        { key: prevNotes.length + 1, title: title, content: content },
-      ];
-    });
-    // Reset the title and content inputs
-    setTitle("");
-    setContent("");
-    // console.log(notes);
+    const newNote = { title, content };
+    axios.post(`${path}/notes`, newNote)
+      .then(res => {
+        setNotes(prevNotes => [...prevNotes, res.data]);
+        // Reset the title and content inputs
+        setTitle("");
+        setContent("");
+      })
+      .catch(error => console.error('Error adding note:', error));
   }
 
   function deleteNote(id) {
-    setNotes((prevNotes) => {
-      return prevNotes.filter((note) => note.key !== id);
-    });
+    axios.delete(`${path}/notes/${id}`)
+      .then((res) => {
+        // console.log('Note deleted:', res.data)
+        setNotes(prevNotes => prevNotes.filter(note => note._id !== id));
+      })
+      .catch(error => console.error('Error deleting note:', error));
+  }
+
+  function updateNote(id, title, content) {
+    axios.patch(`${path}/notes/${id}`, { title, content })
+      .then(response => {
+        setNotes(prevNotes =>
+          prevNotes.map(note => note._id === id ? response.data : note)
+        );
+      })
+      .catch(error => console.error('Error updating note:', error));
   }
 
   return (
@@ -60,11 +85,12 @@ function App() {
       </div>
       {notes.map((note) => (
         <Note
-          key={note.key}
-          id={note.key}
+          key={note._id}
+          id={note._id}
           title={note.title}
           content={note.content}
           onDelete={deleteNote}
+          onUpdate={updateNote}
         />
       ))}
       <Footer />

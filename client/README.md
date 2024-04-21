@@ -6,10 +6,6 @@ The app is deployed on Vercel and can be accessed using the following link:
 
 https://keeper-app-seven-hazel.vercel.app/
 
-<p align="center">
-  <img src="./static/keeper-app.png" alt="keeper-app" width="500px"/>
-</p>
-
 ## Installation
 To install the app, clone the repository and run the following command in the root directory of the project:
 ```bash
@@ -23,22 +19,23 @@ npm install
 ```bash
 npm start
 ```
-3. The app will be running on http://localhost:3000
+3. The app will be running on http://localhost:5000
 
 ## Features
 1. Add a note
 2. Delete a note
 3. View all notes
+4. Edit a note
+5. A database to store notes (MongoDB)
+
 
 ## Technologies
 - React
 - HTML/CSS
 
 ## Future Improvements
-- Add the ability to edit notes
 - Add the ability to categorize notes
 - Add user authentication
-- Add a database to store notes
 - Add the ability to share notes with other users
 - Add the ability to search for notes
 - Add the ability to add images to notes

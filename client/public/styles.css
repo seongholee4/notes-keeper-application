@@ -77,6 +77,11 @@ form {
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
 
+.noteEdit {
+  margin: 16px; /* Keep consistent margin as .note */
+  width: calc(100% - 32px);
+}
+
 form input,
 form textarea {
   width: 100%;
@@ -100,4 +105,10 @@ form button {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   outline: none;
+}
+
+.error-message {
+  color: red;
+  margin: 10px 0;
+  font-size: 0.9em;
 }
