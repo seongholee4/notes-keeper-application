@@ -26,7 +26,7 @@ function Note(props) {
     <div className="note">
       {editMode ? (
         <div className="noteEdit">
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className="errorMessage">{error}</div>}
           <div>
             <input
               type="text"
@@ -41,12 +41,14 @@ function Note(props) {
           </div>
         </div>
       ) : (
-        <>
+        <div>
           <h1>{props.title}</h1>
           <p>{props.content}</p>
-          <button onClick={() => props.onDelete(props.id)}>DELETE</button>
-          <button onClick={() => setEditMode(true)}>EDIT</button>
-        </>
+          <div className="buttonContainer">
+            <button onClick={() => setEditMode(true)}>EDIT</button>
+            <button onClick={() => props.onDelete(props.id)}>DELETE</button>
+          </div>
+        </div>
       )}
     </div>
   );

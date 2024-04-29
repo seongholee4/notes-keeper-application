@@ -3,9 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 html {
   font-family: "Montserrat", sans-serif;
 }
+
 body {
   background: #eee;
   padding: 0 16px;
@@ -35,6 +37,7 @@ footer {
 footer p {
   color: #ccc;
 }
+
 .note {
   background: #fff;
   border-radius: 7px;
@@ -44,10 +47,22 @@ footer p {
   margin: 16px;
   float: left;
 }
+
 .note h1 {
   font-size: 1.1em;
+  overflow: hidden;
   margin-bottom: 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
 }
+
+.note h1:hover {
+  overflow: visible;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
 .note p {
   font-size: 1.1em;
   margin-bottom: 10px;
@@ -58,13 +73,19 @@ footer p {
 .note button {
   position: relative;
   float: right;
+  margin-left: 10px;
   margin-right: 10px;
   color: #f5ba13;
   border: none;
-  width: 36px;
+  width: fit-content;
   height: 36px;
   cursor: pointer;
   outline: none;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
 form {
@@ -77,11 +98,6 @@ form {
   box-shadow: 0 1px 5px rgb(138, 137, 137);
 }
 
-.noteEdit {
-  margin: 16px; /* Keep consistent margin as .note */
-  width: calc(100% - 32px);
-}
-
 form input,
 form textarea {
   width: 100%;
@@ -92,6 +108,7 @@ form textarea {
   font-family: inherit;
   resize: none;
 }
+
 form button {
   position: absolute;
   right: 18px;
@@ -107,8 +124,7 @@ form button {
   outline: none;
 }
 
-.error-message {
+.errorMessage {
   color: red;
-  margin: 10px 0;
   font-size: 0.9em;
 }

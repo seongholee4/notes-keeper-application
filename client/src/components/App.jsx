@@ -62,14 +62,16 @@ function App() {
   return (
     <div>
       <Header />
-      <div>
+      <div className="addNote">
         <form onSubmit={addNote}>
           <input name="title" placeholder="Title" value={title} onChange={handleTitleChange} ></input>
           <textarea name="content" placeholder="Take a note..." rows="3" value={content} onChange={handleContentChange}></textarea>
           <button type="submit">Add</button>
         </form>
       </div>
-      {notes.map((note) => (
+
+      {notes && notes.map((note) => (
+        console.log(note),
         <Note 
           key={note._id}
           id={note._id}

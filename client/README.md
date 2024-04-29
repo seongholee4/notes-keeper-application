@@ -4,7 +4,7 @@ This is a simple note taking app built using React. It allows users to add, dele
 ### Vercel App Link
 The app is deployed on Vercel and can be accessed using the following link:
 
-https://keeper-app-seven-hazel.vercel.app/
+https://notes-keeper-application.vercel.app/
 
 ## Installation
 To install the app, clone the repository and run the following command in the root directory of the project:
