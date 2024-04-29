@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const cors = require('cors');
 const Note = require('./models/note.js');
-require('dotenv').config({ path: './.env' });
+require('dotenv').config();
 
 const app = express();
 
@@ -12,9 +12,19 @@ app.use(express.json());
 
 // MongoDB connection
 const uri = process.env.MONGODB_URI;
+if (!uri) {
+    require('dotenv').config({ path: '.env.local' });
+    uri = process.env.MONGODB_URI; // load from .env.local
+}
+
 mongoose.connect(uri)
-    .then(() => console.log("Connected to MongoDB"))
-    .catch(err => console.error("Could not connect to MongoDB", err));
+    .then(() => console.log("Connected to MongoDB (.env)"))
+    .catch(err => {
+        console.log('Failed to connect using .env URI, trying .env.local URI...');
+        mongoose.connect(uri)
+        .then(() => console.log('Connected to MongoDB (.env.local)'))
+        .catch(err => console.error('Could not connect to MongoDB:\n', err));
+    });
 
 
 // GET a note
@@ -30,7 +40,6 @@ app.get('/notes', async (req, res) => {
 // POST a new note
 app.post('/notes', async (req, res) => {
     try {
-        console.log("req.body", req.body)
         const note = new Note({
             _id : new mongoose.Types.ObjectId(),
             title: req.body.title,
