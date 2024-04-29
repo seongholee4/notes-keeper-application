@@ -21,13 +21,12 @@ function Note(props) {
     setEditMode(false);
   };
 
-
   return (
     <div className="note">
       {editMode ? (
-        <div className="noteEdit">
+        <div className="editNote">
           {error && <div className="errorMessage">{error}</div>}
-          <div>
+          <div className="editNoteInput">
             <input
               type="text"
               value={newTitle}
@@ -37,7 +36,9 @@ function Note(props) {
               value={newContent}
               onChange={(e) => setNewContent(e.target.value)}
             />
-            <button onClick={handleSave}>Save</button>
+            <div className="editButtonContainer">
+              <button onClick={handleSave}>SAVE</button>
+            </div>
           </div>
         </div>
       ) : (

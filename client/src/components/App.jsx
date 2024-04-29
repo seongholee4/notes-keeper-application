@@ -70,16 +70,18 @@ function App() {
         </form>
       </div>
 
-      {notes && notes.map((note) => (
-        <Note 
-          key={note._id}
-          id={note._id}
-          title={note.title}
-          content={note.content}
-          onDelete={deleteNote}
-          onUpdate={updateNote}
-        />
-      ))}
+      <div className="notesContainer">
+        {notes && notes.map((note) => (
+          <Note 
+            key={note._id}
+            id={note._id}
+            title={note.title}
+            content={note.content}
+            onDelete={deleteNote}
+            onUpdate={updateNote}
+          />
+        ))}
+      </div>
       <Footer />
     </div>
   );
