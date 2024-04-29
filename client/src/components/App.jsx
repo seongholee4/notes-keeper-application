@@ -71,7 +71,6 @@ function App() {
       </div>
 
       {notes && notes.map((note) => (
-        console.log(note),
         <Note 
           key={note._id}
           id={note._id}
