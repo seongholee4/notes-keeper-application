@@ -23,11 +23,19 @@ npm install
 npm run dev or npm start
 ```
 #### The server runs on http://localhost:5000
+
 ---
+
 ### Client
-#### Install dependencies and start the client
+#### Create a .env file in the client directory and add the following line
 ```bash
 cd client
+touch .env
+echo "REACT_APP_API_URL=http://localhost:5000" >> .env
+```
+
+#### Install dependencies and start the client
+```bash
 npm install
 npm start
 ```
