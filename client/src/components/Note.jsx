@@ -25,7 +25,7 @@ function Note(props) {
     <div className="note">
       {editMode ? (
         <div className="editNote">
-          {error && <div className="errorMessage">{error}</div>}
+          {error && <div className="error">{error}</div>}
           <div className="editNoteInput">
             <input
               type="text"

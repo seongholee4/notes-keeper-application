@@ -154,7 +154,7 @@ form button {
   outline: none;
 }
 
-.errorMessage {
+.error {
   color: red;
   font-size: 0.9em;
 }
