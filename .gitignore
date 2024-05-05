@@ -9,7 +9,7 @@ about.MD
 # Ignore environment variable files
 /server/.env
 /client/.env
-
+**/.env
 # dependencies
 /node_modules
 /.pnp
