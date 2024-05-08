@@ -9,7 +9,7 @@ It allows users to add, edit, delete and view notes. The app is built using Reac
 - https://notes-keeper-application.vercel.app/
 
 #### Railway App Link for Backend
-- https://notes-keeper-application-production.up.railway.app
+- https://notes-keeper-application-production.up.railway.app/notes
 
 ## Setup and Configuration 
 
@@ -58,8 +58,6 @@ npm start
 
 ## Reference Links
 
-### YouTube Links
-
 [Connecting Node.js App to MongoDB](https://www.youtube.com/watch?v=bhiEJW5poHU&t=674s)
 - Referenced for MongoDB and Mongoose setup
 
@@ -67,7 +65,6 @@ npm start
 - Referenced for Project structure and setup
 
 [Full Stack Note Taking Application](https://www.youtube.com/watch?v=Wpdz5qbk79s&list=PLCKLPJHmXyU_VXHlXJNoiteyidITvZXMX&index=2&ab_channel=ShivamShekhar)
-
-### GitHub Links
-
-[Full Stack Note Taking Application](https://github.com/shvam0000/Full-Stack-Note-Taking-Application/tree/main)
+[GitHub Link: Full Stack Note Taking Application](https://github.com/shvam0000/Full-Stack-Note-Taking-Application/tree/main)
+- Referenced for implementation on edit functionality and modification of css styling
+- Referenced for mongoose schema construction for Object Mapping with MongoDB.
