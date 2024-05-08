@@ -22,7 +22,7 @@ git clone https://github.com/seongholee4/notes-keeper-application.git
 #### Replace <your_mongo_uri> with your MongoDB URI
 ```bash
 cd server
-echo MONGODB_URI=`<your_mongo_uri>` >> .env
+echo MONGODB_URI=`<your_mongoDB_uri>` >> .env
 ```
 #### Install dependencies and start the server
 ```bash
@@ -38,7 +38,7 @@ npm run dev or npm start
 #### Replace http://localhost:5000 with the server URL if it is different
 ```bash
 cd client
-echo "REACT_APP_API_URL=http://localhost:5000" >> .env
+echo REACT_APP_API_URL=http://localhost:5000 >> .env
 ```
 
 #### Install dependencies and start the client
